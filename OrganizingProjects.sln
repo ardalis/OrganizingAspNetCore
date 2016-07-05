@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DefaultOrganization", "src\DefaultOrganization\DefaultOrganization.xproj", "{40A6DFFD-E371-4A3C-AD22-C896B2D41535}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WithAreas", "src\WithAreas\WithAreas.xproj", "{89CE3D90-2D1A-4CF3-B064-FEBF8AF39F02}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,11 +24,16 @@ Global
 		{40A6DFFD-E371-4A3C-AD22-C896B2D41535}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40A6DFFD-E371-4A3C-AD22-C896B2D41535}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40A6DFFD-E371-4A3C-AD22-C896B2D41535}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89CE3D90-2D1A-4CF3-B064-FEBF8AF39F02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89CE3D90-2D1A-4CF3-B064-FEBF8AF39F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89CE3D90-2D1A-4CF3-B064-FEBF8AF39F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89CE3D90-2D1A-4CF3-B064-FEBF8AF39F02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{40A6DFFD-E371-4A3C-AD22-C896B2D41535} = {FBC93348-D174-4341-B387-2CA989ED9D50}
+		{89CE3D90-2D1A-4CF3-B064-FEBF8AF39F02} = {FBC93348-D174-4341-B387-2CA989ED9D50}
 	EndGlobalSection
 EndGlobal

@@ -1,17 +1,18 @@
-﻿using DefaultOrganization.Core.Interfaces;
-using DefaultOrganization.Core.Model;
-using DefaultOrganization.Infrastructure.Data;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using WithAreas.Core.Interfaces;
+using WithAreas.Core.Model;
+using WithAreas.Infrastructure.Data;
 
-namespace DefaultOrganization
+namespace WithAreas
 {
     public class Startup
     {
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -28,7 +29,7 @@ namespace DefaultOrganization
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(
-                            optionsBuilder => optionsBuilder.UseInMemoryDatabase());
+                optionsBuilder => optionsBuilder.UseInMemoryDatabase());
 
             // Add framework services.
             services.AddMvc();
@@ -59,6 +60,11 @@ namespace DefaultOrganization
 
             app.UseMvc(routes =>
             {
+                // Areas support
+                routes.MapRoute(
+                    name: "areaRoute",
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");

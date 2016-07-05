@@ -1,0 +1,16 @@
+﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@model IEnumerable<WithAreas.Core.Model.Ninja>
+@{
+    ViewBag.ItemName = "Ninja";
+    ViewBag.ItemNames = ViewBag.ItemName + "s";
+}
+
+<h2>@ViewBag.ItemNames</h2>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li><a asp-controller="@ViewBag.ItemNames" asp-action="Details" asp-route-id="@item.Id">@item</a></li>
+    }
+</ul>
+<a asp-area="@ViewBag.ItemNames" asp-controller="Home" asp-action="Add">Add @ViewBag.ItemName</a>

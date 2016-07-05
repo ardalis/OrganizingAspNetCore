@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using DefaultOrganization;
 using Microsoft.AspNetCore.Hosting;
 
-namespace OrganizingProjects
+namespace WithAreas
 {
     public class Program
     {

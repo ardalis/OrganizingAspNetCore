@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using DefaultOrganization.Core.Interfaces;
-using DefaultOrganization.Core.Model;
-using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using WithAreas.Core.Interfaces;
+using WithAreas.Core.Model;
 
-namespace DefaultOrganization.Infrastructure.Data
+namespace WithAreas.Infrastructure.Data
 {
     public class EfRepository<T> : IRepository<T> where T : BaseEntity
     {

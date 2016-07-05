@@ -1,0 +1,9 @@
+﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@model DefaultOrganization.Core.Model.Plant
+<h2>@Model.Name</h2>
+<div>
+    Id: @Model.Id
+</div>
+<div>
+    <a asp-controller="Plants" asp-action="Index">Plant List</a>
+</div>

@@ -1,0 +1,9 @@
+﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@model DefaultOrganization.Core.Model.Zombie
+<h2>@Model.Name</h2>
+<div>
+    Id: @Model.Id
+</div>
+<div>
+    <a asp-controller="Zombies" asp-action="Index">Zombie List</a>
+</div>

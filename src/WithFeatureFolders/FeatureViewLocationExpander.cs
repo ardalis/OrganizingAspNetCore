@@ -8,7 +8,8 @@ namespace WithFeatureFolders
 {
     public class FeatureViewLocationExpander : IViewLocationExpander
     {
-        public IEnumerable<string> ExpandViewLocations(ViewLocationExpanderContext context, IEnumerable<string> viewLocations)
+        public IEnumerable<string> ExpandViewLocations(ViewLocationExpanderContext context, 
+            IEnumerable<string> viewLocations)
         {
             if (context == null)
             {
@@ -19,11 +20,13 @@ namespace WithFeatureFolders
             {
                 throw new ArgumentNullException(nameof(viewLocations));
             }
+
             var controllerActionDescriptor = context.ActionContext.ActionDescriptor as ControllerActionDescriptor;
             if (controllerActionDescriptor == null)
             {
                 throw new NullReferenceException("ControllerActionDescriptor cannot be null.");
             }
+
             string featureName = controllerActionDescriptor.Properties["feature"] as string;
             foreach (var location in viewLocations)
             {

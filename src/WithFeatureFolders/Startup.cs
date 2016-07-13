@@ -1,9 +1,5 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,8 +32,7 @@ namespace WithFeatureFolders
                 optionsBuilder => optionsBuilder.UseInMemoryDatabase());
 
             // Add framework services.
-            services.AddMvc()
-                .AddMvcOptions(o => o.Conventions.Add(new FeatureConvention()))
+            services.AddMvc(o => o.Conventions.Add(new FeatureConvention()))
                 .AddRazorOptions(options =>
                 {
                     // {0} - Action Name
@@ -61,6 +56,11 @@ namespace WithFeatureFolders
                     //options.ViewLocationFormats.Insert(0, "/Features/Shared/{0}.cshtml");
                     //options.ViewLocationFormats.Insert(0, "/Features/{3}/{0}.cshtml");
                     //options.ViewLocationFormats.Insert(0, "/Features/{3}/{1}/{0}.cshtml");
+                    //
+                    // (do NOT clear AreaViewLocationFormats)
+                    //options.AreaViewLocationFormats.Insert(0, "/Areas/{2}/Features/Shared/{0}.cshtml");
+                    //options.AreaViewLocationFormats.Insert(0, "/Areas/{2}/Features/{3}/{0}.cshtml");
+                    //options.AreaViewLocationFormats.Insert(0, "/Areas/{2}/Features/{3}/{1}/{0}.cshtml");
 
 
                     options.ViewLocationExpanders.Add(new FeatureViewLocationExpander());
@@ -96,28 +96,6 @@ namespace WithFeatureFolders
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-        }
-    }
-
-    public class FeatureConvention : IControllerModelConvention
-    {
-        public void Apply(ControllerModel controller)
-        {
-            controller.Properties.Add("feature", GetFeatureName(controller.ControllerType));
-        }
-
-        private string GetFeatureName(TypeInfo controllerType)
-        {
-            string fullname = controllerType.FullName;
-            var tokens = fullname.Split('.');
-            if (!tokens.Any(t => t == "Features")) return "";
-            string featureName = tokens
-                .SkipWhile(t => !t.Equals("features", StringComparison.CurrentCultureIgnoreCase))
-                .Skip(1)
-                .Take(1)
-                .FirstOrDefault();
-
-            return featureName;
         }
     }
 }

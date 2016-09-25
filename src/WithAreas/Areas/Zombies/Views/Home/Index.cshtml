@@ -10,7 +10,7 @@
 <ul>
     @foreach (var item in Model)
     {
-        <li><a asp-controller="@ViewBag.ItemNames" asp-action="Details" asp-route-id="@item.Id">@item</a></li>
+        <li><a asp-action="Details" asp-route-id="@item.Id">@item</a></li>
     }
 </ul>
 <a asp-area="@ViewBag.ItemNames" asp-controller="Home" asp-action="Add">Add @ViewBag.ItemName</a>

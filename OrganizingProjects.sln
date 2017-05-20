@@ -1,20 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FBC93348-D174-4341-B387-2CA989ED9D50}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{87F54C5F-10CF-4116-B06D-E23193BB3321}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DefaultOrganization", "src\DefaultOrganization\DefaultOrganization.xproj", "{40A6DFFD-E371-4A3C-AD22-C896B2D41535}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DefaultOrganization", "src\DefaultOrganization\DefaultOrganization.csproj", "{40A6DFFD-E371-4A3C-AD22-C896B2D41535}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WithAreas", "src\WithAreas\WithAreas.xproj", "{89CE3D90-2D1A-4CF3-B064-FEBF8AF39F02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WithAreas", "src\WithAreas\WithAreas.csproj", "{89CE3D90-2D1A-4CF3-B064-FEBF8AF39F02}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WithFeatureFolders", "src\WithFeatureFolders\WithFeatureFolders.xproj", "{255F1CE9-D016-4598-9DF2-D9A2E1FC91EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WithFeatureFolders", "src\WithFeatureFolders\WithFeatureFolders.csproj", "{255F1CE9-D016-4598-9DF2-D9A2E1FC91EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

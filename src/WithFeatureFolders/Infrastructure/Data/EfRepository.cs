@@ -17,7 +17,7 @@ namespace WithFeatureFolders.Infrastructure.Data
 
         public T GetById(int id)
         {
-            return _dbContext.Set<T>().FirstOrDefault(e => e.Id == id);
+            return _dbContext.Find<T>(id);
         }
 
         public List<T> List()
@@ -27,16 +27,6 @@ namespace WithFeatureFolders.Infrastructure.Data
 
         public T Add(T entity)
         {
-            if (entity.Id == 0)
-            {
-                int newId = 1;
-                var entities = List();
-                if (entities.Any())
-                {
-                    newId = entities.Max(z => z.Id) + 1;
-                }
-                entity.Id = newId;
-            }
             _dbContext.Set<T>().Add(entity);
             _dbContext.SaveChanges();
 

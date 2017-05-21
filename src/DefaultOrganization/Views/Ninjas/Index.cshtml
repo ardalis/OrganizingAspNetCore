@@ -1,5 +1,5 @@
 ﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
-@model IEnumerable<DefaultOrganization.Core.Model.Ninja>
+@model DefaultOrganization.ViewModels.NinjaListViewModel
 @{
     ViewBag.ItemName = "Ninja";
     ViewBag.ItemNames = ViewBag.ItemName + "s";
@@ -8,7 +8,7 @@
 <h2>@ViewBag.ItemNames</h2>
 
 <ul>
-    @foreach (var item in Model)
+    @foreach (var item in Model.Ninjas)
     {
         <li><a asp-controller="@ViewBag.ItemNames" asp-action="Details" asp-route-id="@item.Id">@item</a></li>
     }

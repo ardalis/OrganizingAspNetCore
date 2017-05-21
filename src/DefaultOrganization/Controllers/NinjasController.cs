@@ -1,6 +1,8 @@
 ﻿using DefaultOrganization.Core.Interfaces;
 using DefaultOrganization.Core.Model;
+using DefaultOrganization.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace DefaultOrganization.Controllers
 {
@@ -16,13 +18,21 @@ namespace DefaultOrganization.Controllers
         public IActionResult Index()
         {
             var entities = _ninjaRepository.List();
-            return View(entities);
+
+            var viewModel = new NinjaListViewModel();
+            viewModel.Ninjas.AddRange(entities
+                .Select(e => new NinjaViewModel()
+            { Id = e.Id, Name = e.Name })
+                .ToList());
+            return View(viewModel);
         }
 
         public IActionResult Details(int id)
         {
             var entity = _ninjaRepository.GetById(id);
-            return View(entity);
+
+            var viewmodel = new NinjaViewModel() { Id = entity.Id, Name = entity.Name };
+            return View(viewmodel);
         }
 
         public IActionResult Add()

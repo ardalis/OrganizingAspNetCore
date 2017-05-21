@@ -2,7 +2,7 @@
 
 namespace WithFeatureFolders.Features.Ninjas
 {
-    [Route("/Ninjas/Swords/")]
+    [Route("/Ninjas/Swords/", Name ="NinjaSwords")]
     public class SwordsController : Controller
     {
         public IActionResult Index()

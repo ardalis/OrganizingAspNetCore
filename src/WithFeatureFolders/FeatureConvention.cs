@@ -9,7 +9,8 @@ namespace WithFeatureFolders
     {
         public void Apply(ControllerModel controller)
         {
-            controller.Properties.Add("feature", GetFeatureName(controller.ControllerType));
+            var featureName = GetFeatureName(controller.ControllerType);
+            controller.Properties.Add("feature", featureName);
         }
 
         private string GetFeatureName(TypeInfo controllerType)

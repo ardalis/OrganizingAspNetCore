@@ -2,15 +2,15 @@
 using System.Linq;
 using WithFeatureFolders.Core.Interfaces;
 using WithFeatureFolders.Core.Model;
-using WithFeatureFolders.Features.Ninjas.Ninjas;
+using WithFeatureFolders.Features.Samurai.Samurai;
 
-namespace WithFeatureFolders.Features.Ninjas
+namespace WithFeatureFolders.Features.Samurai
 {
-    public class NinjasController : Controller
+    public class SamuraiController : Controller
     {
         private readonly IRepository<Ninja> _ninjaRepository;
 
-        public NinjasController(IRepository<Ninja> ninjaRepository)
+        public SamuraiController(IRepository<Ninja> ninjaRepository)
         {
             _ninjaRepository = ninjaRepository;
         }
@@ -39,7 +39,7 @@ namespace WithFeatureFolders.Features.Ninjas
         {
             var entity = new Ninja()
             {
-                Name = "Random Ninja"
+                Name = "Random Samurai"
             };
             _ninjaRepository.Add(entity);
 

@@ -1,4 +1,4 @@
-namespace WithFeatureFolders.Features.Ninjas.Ninjas
+namespace WithFeatureFolders.Features.Samurai.Samurai
 {
     public class NinjaViewModel
     {

@@ -1,6 +1,6 @@
-namespace WithFeatureFolders.Features.Ninjas.Ninjas
+namespace WithFeatureFolders.Features.Samurai.Samurai
 {
-    public class NinjaViewModel
+    public class SwordViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

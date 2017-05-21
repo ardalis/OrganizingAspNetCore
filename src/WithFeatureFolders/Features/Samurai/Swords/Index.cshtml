@@ -1,0 +1,11 @@
+﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@model IEnumerable<string>
+<h2>Samurai Swords</h2>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item</li>
+    }
+</ul>
+<a asp-controller="Samurai" asp-action="Index">Samurai List</a>

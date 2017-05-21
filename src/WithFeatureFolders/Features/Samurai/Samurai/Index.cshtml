@@ -1,8 +1,8 @@
 ﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
-@model WithFeatureFolders.Features.Ninjas.Ninjas.NinjaListViewModel
+@model WithFeatureFolders.Features.Samurai.Samurai.NinjaListViewModel
 @{
-    ViewBag.ItemName = "Ninja";
-    ViewBag.ItemNames = ViewBag.ItemName + "s";
+    ViewBag.ItemName = "Samurai";
+    ViewBag.ItemNames = ViewBag.ItemName;// + "s";
 }
 
 <h2>@ViewBag.ItemNames</h2>
@@ -14,5 +14,6 @@
     }
 </ul>
 <a asp-controller="@ViewBag.ItemNames" asp-action="Add">Add @ViewBag.ItemName</a><br/>
-<a asp-controller="Swords" asp-action="Index">Ninja Swords List</a>
+<a asp-route="SamuraiSwords">Samurai Swords List</a><br />
+<a asp-route="NinjaSwords">Ninja Swords List</a>
 

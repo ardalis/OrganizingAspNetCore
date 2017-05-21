@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
-namespace WithFeatureFolders
+namespace Ardalis.CoreFeatureFolders
 {
     public class FeatureConvention : IControllerModelConvention
     {

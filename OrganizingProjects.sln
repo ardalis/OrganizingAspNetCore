@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WithAreas", "src\WithAreas\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WithFeatureFolders", "src\WithFeatureFolders\WithFeatureFolders.csproj", "{255F1CE9-D016-4598-9DF2-D9A2E1FC91EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreFeatureFolders", "CoreFeatureFolders\CoreFeatureFolders.csproj", "{780C3714-736C-42F7-B9BD-773BD7337A76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{255F1CE9-D016-4598-9DF2-D9A2E1FC91EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{255F1CE9-D016-4598-9DF2-D9A2E1FC91EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{255F1CE9-D016-4598-9DF2-D9A2E1FC91EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{780C3714-736C-42F7-B9BD-773BD7337A76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{780C3714-736C-42F7-B9BD-773BD7337A76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{780C3714-736C-42F7-B9BD-773BD7337A76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{780C3714-736C-42F7-B9BD-773BD7337A76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,5 +45,6 @@ Global
 		{40A6DFFD-E371-4A3C-AD22-C896B2D41535} = {FBC93348-D174-4341-B387-2CA989ED9D50}
 		{89CE3D90-2D1A-4CF3-B064-FEBF8AF39F02} = {FBC93348-D174-4341-B387-2CA989ED9D50}
 		{255F1CE9-D016-4598-9DF2-D9A2E1FC91EC} = {FBC93348-D174-4341-B387-2CA989ED9D50}
+		{780C3714-736C-42F7-B9BD-773BD7337A76} = {FBC93348-D174-4341-B387-2CA989ED9D50}
 	EndGlobalSection
 EndGlobal

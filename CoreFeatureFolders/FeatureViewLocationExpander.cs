@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Razor;
 using System.Linq;
 
-namespace WithFeatureFolders
+namespace Ardalis.CoreFeatureFolders
 {
     public class FeatureViewLocationExpander : IViewLocationExpander
     {

@@ -43,8 +43,6 @@ namespace Ardalis.CoreFeatureFolders
             options.AreaViewLocationFormats.Insert(0, "/Areas/{2}/Features/{3}/{0}.cshtml");
             options.AreaViewLocationFormats.Insert(0, "/Areas/{2}/Features/{3}/{1}/{0}.cshtml");
 
-
-
             options.ViewLocationExpanders.Add(new FeatureViewLocationExpander());
         }
     }

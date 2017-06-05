@@ -4,6 +4,13 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <AssemblyName>Ardalis.CoreFeatureFolders</AssemblyName>
     <RootNamespace>Ardalis.CoreFeatureFolders</RootNamespace>
+    <PackageId>Ardalis.CoreFeatureFolders</PackageId>
+    <Authors>Steve Smith (@ardalis)</Authors>
+    <Description>Add support for feature folders to ASP.NET Core MVC projects.</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes>Initial release.</PackageReleaseNotes>
+    <Copyright>Copyright 2017 (c) Ardalis LLC All rights reserved.</Copyright>
+    <PackageTags>aspnetcore mvc feature folder</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

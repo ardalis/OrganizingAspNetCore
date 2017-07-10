@@ -1,0 +1,20 @@
+﻿@page
+@using WithRazorPages.Core.Interfaces;
+@using WithRazorPages.Core.Model;
+@model IndexModel
+@{
+    ViewBag.ItemName = "Ninja";
+    ViewBag.ItemNames = ViewBag.ItemName + "s";
+}
+
+<h2>@ViewBag.ItemNames</h2>
+
+<ul>
+    @foreach (var item in Model.Ninjas)
+    {
+        <li><a asp-page="/Ninjas/Details" asp-route-id="@item.Id">@item</a></li>
+    }
+</ul>
+<a asp-controller="@ViewBag.ItemNames" asp-action="Add">Add @ViewBag.ItemName</a><br/>
+<a asp-page="/Ninjas/Swords/Index">Ninja Swords List</a>
+

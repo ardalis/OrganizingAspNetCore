@@ -6,5 +6,4 @@ namespace WithFeatureFolders.Features.Ninjas.Ninjas
     {
         public List<NinjaViewModel> Ninjas { get; } = new List<NinjaViewModel>();
     }
-
 }

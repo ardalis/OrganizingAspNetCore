@@ -1,0 +1,20 @@
+﻿@page
+
+@functions {
+    public List<string> Swords = new List<string>();
+
+    public Index_Page()
+    {
+        Swords.Add("Katana");
+        Swords.Add("Ninjago");
+    }
+}
+<h2>Ninja Swords</h2>
+
+<ul>
+    @foreach (var item in Swords)
+    {
+        <li>@item</li>
+    }
+</ul>
+<a asp-page="/Ninja/Index">Ninja List</a>

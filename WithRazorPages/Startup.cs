@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using WithRazorPages.Core.Model;
 using WithRazorPages.Core.Interfaces;
 using WithRazorPages.Infrastructure.Data;
@@ -29,7 +23,12 @@ namespace WithRazorPages
         {
             services.AddDbContext<ApplicationDbContext>(
                 optionsBuilder => optionsBuilder.UseInMemoryDatabase("db"));
+
             services.AddMvc();
+            //    .AddRazorOptions(options =>
+            //{
+            //    options.PageViewLocationFormats.Add("/Pages/Shared/{0}.cshtml");
+            //});
 
             services.AddScoped<IRepository<Ninja>, EfRepository<Ninja>>();
             services.AddScoped<IRepository<Pirate>, EfRepository<Pirate>>();

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,13 +31,14 @@ namespace WithRazorPages.Pages.Ninjas
             _ninjaRepository = ninjaRepository;
         }
 
+        [ResponseCache(Duration = 10)]
         public async Task OnGetAsync()
         {
             Ninjas = _ninjaRepository.List()
                 .Select(n => new NinjaViewModel { Id = n.Id, Name = n.Name }).ToList();
         }
 
-        public async Task OnGetAddAsync()
+        public async Task<IActionResult> OnGetAddAsync()
         {
             var entity = new Ninja()
             {
@@ -44,8 +46,7 @@ namespace WithRazorPages.Pages.Ninjas
             };
             _ninjaRepository.Add(entity);
 
-            await OnGetAsync();
+            return RedirectToPage();
         }
-
     }
 }

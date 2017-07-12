@@ -10,9 +10,9 @@
 <ul>
     @foreach (var item in Model.Ninjas)
     {
-        <li><a asp-page="/Ninjas/Details" asp-route-id="@item.Id">@item</a></li>
+        <li><a asp-page="Details" asp-route-id="@item.Id">@item</a></li>
     }
 </ul>
-<a asp-page="Index" asp-page-handler="Add">Add @ViewBag.ItemName</a><br />
-<a asp-page="/Ninjas/Swords/Index">Ninja Swords List</a>
+<a asp-page-handler="Add">Add @ViewBag.ItemName</a><br />
+<a asp-page="Swords/Index">Ninja Swords List</a>
 

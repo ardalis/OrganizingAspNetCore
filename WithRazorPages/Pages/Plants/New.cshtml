@@ -1,0 +1,42 @@
+﻿@page
+@using WithRazorPages.Core.Interfaces;
+@using WithRazorPages.Core.Model;
+@inject IRepository<Plant> _repository
+
+@functions {
+    [BindProperty]
+    public Plant Plant { get; set; }
+
+    public IActionResult OnPost()
+    {
+        if(!ModelState.IsValid) return Page();
+
+        _repository.Add(Plant);
+
+        return RedirectToPage("./Index");
+    }
+}
+@{
+    ViewData["Title"] = "New Plant";
+}
+
+
+<h1>New Plant</h1>
+<form method="post" class="form-horizontal">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Plant.Name" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Plant.Name" class="form-control" />
+            <span asp-validation-for="Plant.Name" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+</form>
+<div>
+    <a asp-page="./Index">Plant List</a>
+</div>

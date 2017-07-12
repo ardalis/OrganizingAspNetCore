@@ -15,6 +15,6 @@
         <li><a asp-page="/Ninjas/Details" asp-route-id="@item.Id">@item</a></li>
     }
 </ul>
-<a asp-controller="@ViewBag.ItemNames" asp-action="Add">Add @ViewBag.ItemName</a><br/>
+<a asp-page="Index" asp-page-handler="Add">Add @ViewBag.ItemName</a><br />
 <a asp-page="/Ninjas/Swords/Index">Ninja Swords List</a>
 

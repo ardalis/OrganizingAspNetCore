@@ -1,14 +1,14 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewBag.ItemName = "Zombie";
+    ViewBag.ItemName = "Plant";
     ViewBag.ItemNames = ViewBag.ItemName + "s";
 }
 
 <h2>@ViewBag.ItemNames</h2>
 
 <ul>
-    @foreach (var item in Model.Zombies)
+    @foreach (var item in Model.Plants)
     {
         <li><a asp-page="/@ViewBag.ItemNames/Details" asp-route-id="@item.Id">@item</a></li>
     }

@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 using WithRazorPages.Core.Interfaces;
 using WithRazorPages.Core.Model;
 
-namespace WithRazorPages.Pages.Ninjas
+namespace WithRazorPages.Pages.Pirates
 {
     public class IndexModel : PageModel
     {
-        private readonly IRepository<Ninja> _ninjaRepository;
+        private readonly IRepository<Pirate> _pirateRepository;
 
-        public List<NinjaViewModel> Ninjas { get; set; } = new List<NinjaViewModel>();
+        public List<PirateViewModel> Pirates { get; set; } = new List<PirateViewModel>();
 
-        public class NinjaViewModel
+        public class PirateViewModel
         {
             public int Id { get; set; }
             public string Name { get; set; }
@@ -25,24 +25,23 @@ namespace WithRazorPages.Pages.Ninjas
             }
         }
 
-        public IndexModel(IRepository<Ninja> ninjaRepository)
+        public IndexModel(IRepository<Pirate> pirateRepository)
         {
-            _ninjaRepository = ninjaRepository;
+            _pirateRepository = pirateRepository;
         }
 
         public async Task OnGetAsync()
         {
-            Ninjas = _ninjaRepository.List()
-                .Select(n => new NinjaViewModel { Id = n.Id, Name = n.Name }).ToList();
+            Pirates = _pirateRepository.List()
+                .Select(n => new PirateViewModel { Id = n.Id, Name = n.Name }).ToList();
         }
-
         public async Task OnGetAddAsync()
         {
-            var entity = new Ninja()
+            var entity = new Pirate()
             {
-                Name = "Random Ninja"
+                Name = "Random Pirate"
             };
-            _ninjaRepository.Add(entity);
+            _pirateRepository.Add(entity);
 
             await OnGetAsync();
         }

@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 using WithRazorPages.Core.Interfaces;
 using WithRazorPages.Core.Model;
 
-namespace WithRazorPages.Pages.Ninjas
+namespace WithRazorPages.Pages.Plants
 {
     public class IndexModel : PageModel
     {
-        private readonly IRepository<Ninja> _ninjaRepository;
+        private readonly IRepository<Plant> _plantRepository;
 
-        public List<NinjaViewModel> Ninjas { get; set; } = new List<NinjaViewModel>();
+        public List<PlantViewModel> Plants { get; set; } = new List<PlantViewModel>();
 
-        public class NinjaViewModel
+        public class PlantViewModel
         {
             public int Id { get; set; }
             public string Name { get; set; }
@@ -25,24 +25,23 @@ namespace WithRazorPages.Pages.Ninjas
             }
         }
 
-        public IndexModel(IRepository<Ninja> ninjaRepository)
+        public IndexModel(IRepository<Plant> plantRepository)
         {
-            _ninjaRepository = ninjaRepository;
+            _plantRepository = plantRepository;
         }
 
         public async Task OnGetAsync()
         {
-            Ninjas = _ninjaRepository.List()
-                .Select(n => new NinjaViewModel { Id = n.Id, Name = n.Name }).ToList();
+            Plants = _plantRepository.List()
+                .Select(n => new PlantViewModel { Id = n.Id, Name = n.Name }).ToList();
         }
-
         public async Task OnGetAddAsync()
         {
-            var entity = new Ninja()
+            var entity = new Plant()
             {
-                Name = "Random Ninja"
+                Name = "Random Plant"
             };
-            _ninjaRepository.Add(entity);
+            _plantRepository.Add(entity);
 
             await OnGetAsync();
         }

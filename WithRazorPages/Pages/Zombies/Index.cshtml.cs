@@ -35,6 +35,16 @@ namespace WithRazorPages.Pages.Zombies
             Zombies = _zombieRepository.List()
                 .Select(n => new ZombieViewModel { Id = n.Id, Name = n.Name }).ToList();
         }
+        public async Task OnGetAddAsync()
+        {
+            var entity = new Zombie()
+            {
+                Name = "Random Zombie"
+            };
+            _zombieRepository.Add(entity);
+
+            await OnGetAsync();
+        }
 
     }
 }

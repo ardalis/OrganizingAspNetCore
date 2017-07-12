@@ -1,0 +1,22 @@
+﻿@page "{id:int}"
+@using WithRazorPages.Core.Interfaces;
+@using WithRazorPages.Core.Model;
+@inject IRepository<Zombie> _repository;
+
+@functions {
+    public Zombie Zombie { get; set; }
+
+    public IActionResult OnGet(int id)
+    {
+        Zombie = _repository.GetById(id);
+
+        return Page();
+    }
+}
+<h2>Zombie: @Zombie.Name</h2>
+<div>
+    Id: @Zombie.Id
+</div>
+<div>
+    <a asp-page="/Zombies/Index">Zombie List</a>
+</div>

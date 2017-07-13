@@ -24,11 +24,16 @@ namespace WithRazorPages
             services.AddDbContext<ApplicationDbContext>(
                 optionsBuilder => optionsBuilder.UseInMemoryDatabase("db"));
 
-            services.AddMvc();
-            //    .AddRazorOptions(options =>
-            //{
-            //    options.PageViewLocationFormats.Add("/Pages/Shared/{0}.cshtml");
-            //});
+            services.AddMvc()
+                .AddRazorOptions(options =>
+                {
+                    //options.PageViewLocationFormats.Add("/Pages/Shared/{0}.cshtml");
+                })
+                .AddRazorPagesOptions(rpopt =>
+                {
+                    // this option should become available at RTM
+                    // rpopt.Conventions.AddPageRoute("/Pages/Shared/Error", "/Error");
+                });
 
             services.AddScoped<IRepository<Ninja>, EfRepository<Ninja>>();
             services.AddScoped<IRepository<Pirate>, EfRepository<Pirate>>();

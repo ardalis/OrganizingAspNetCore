@@ -38,13 +38,21 @@ namespace WithRazorPages.Pages.Ninjas
                 .Select(n => new NinjaViewModel { Id = n.Id, Name = n.Name }).ToList();
         }
 
-        public async Task<IActionResult> OnGetAddAsync()
+        public async Task<IActionResult> OnPostAddAsync()
         {
             var entity = new Ninja()
             {
                 Name = "Random Ninja"
             };
             _ninjaRepository.Add(entity);
+
+            return RedirectToPage();
+        }
+
+        public async Task<IActionResult> OnPostDeleteAsync(int id)
+        {
+            var entityToDelete = _ninjaRepository.GetById(id);
+            _ninjaRepository.Delete(entityToDelete);
 
             return RedirectToPage();
         }

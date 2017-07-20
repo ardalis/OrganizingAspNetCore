@@ -1,18 +1,15 @@
 ﻿@page
-@functions 
-{
-    public List<string> Swords = new List<string>();
-
-    public Index_Page()
+@{
+    var swords = new List<string>()    
     {
-        Swords.Add("Katana");
-        Swords.Add("Ninjago");
-    }
+        "Katana",
+        "Ninjago"
+    };
 }
 <h2>Ninja Swords</h2>
 
 <ul>
-    @foreach (var item in Swords)
+    @foreach (var item in swords)
     {
         <li>@item</li>
     }

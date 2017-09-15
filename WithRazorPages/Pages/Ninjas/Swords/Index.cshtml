@@ -1,0 +1,17 @@
+﻿@page
+@{
+    var swords = new List<string>()    
+    {
+        "Katana",
+        "Ninjago"
+    };
+}
+<h2>Ninja Swords</h2>
+
+<ul>
+    @foreach (var item in swords)
+    {
+        <li>@item</li>
+    }
+</ul>
+<a asp-page="/Ninjas/Index">Ninja List</a>

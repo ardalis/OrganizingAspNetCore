@@ -1,0 +1,22 @@
+﻿@page "{id:int}"
+@using WithRazorPages.Core.Interfaces;
+@using WithRazorPages.Core.Model;
+@inject IRepository<Ninja> _repository
+
+@functions {
+    public Ninja Ninja { get; set; }
+
+    public IActionResult OnGet(int id)
+    {
+        Ninja = _repository.GetById(id);
+
+        return Page();
+    }
+}
+<h2>Ninja: @Ninja.Name</h2>
+<div>
+    Id: @Ninja.Id
+</div>
+<div>
+    <a asp-page="..">Ninja List</a>
+</div>

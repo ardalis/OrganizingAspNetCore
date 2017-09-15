@@ -1,0 +1,22 @@
+﻿@page "{id:int}"
+@using WithRazorPages.Core.Interfaces;
+@using WithRazorPages.Core.Model;
+@inject IRepository<Plant> _repository;
+
+@functions {
+    public Plant Plant { get; set; }
+
+    public IActionResult OnGet(int id)
+    {
+        Plant = _repository.GetById(id);
+
+        return Page();
+    }
+}
+<h2>Plant: @Plant.Name</h2>
+<div>
+    Id: @Plant.Id
+</div>
+<div>
+    <a asp-page="/Plants/Index">Plant List</a>
+</div>

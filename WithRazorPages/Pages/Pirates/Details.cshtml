@@ -1,0 +1,22 @@
+﻿@page "{id:int}"
+@using WithRazorPages.Core.Interfaces;
+@using WithRazorPages.Core.Model;
+@inject IRepository<Pirate> _repository;
+
+@functions {
+    public Pirate Pirate { get; set; }
+
+    public IActionResult OnGet(int id)
+    {
+        Pirate = _repository.GetById(id);
+
+        return Page();
+    }
+}
+<h2>Pirate: @Pirate.Name</h2>
+<div>
+    Id: @Pirate.Id
+</div>
+<div>
+    <a asp-page="/Pirates/Index">Pirate List</a>
+</div>

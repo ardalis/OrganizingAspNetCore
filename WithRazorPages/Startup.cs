@@ -32,7 +32,7 @@ namespace WithRazorPages
                 .AddRazorPagesOptions(rpopt =>
                 {
                     // this option should become available at RTM
-                    // rpopt.Conventions.AddPageRoute("/Pages/Shared/Error", "/Error");
+                    rpopt.Conventions.AddPageRoute("/Pages/Shared/Error", "/Error");
                 });
 
             services.AddScoped<IRepository<Ninja>, EfRepository<Ninja>>();

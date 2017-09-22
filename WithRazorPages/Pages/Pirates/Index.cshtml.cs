@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,6 +7,7 @@ using WithRazorPages.Core.Model;
 
 namespace WithRazorPages.Pages.Pirates
 {
+    [ValidateModel]
     public class IndexModel : PageModel
     {
         private readonly IRepository<Pirate> _pirateRepository;

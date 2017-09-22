@@ -6,7 +6,7 @@
 }
 
 <h2>@ViewBag.ItemNames</h2>
-
+<h3>Razor Pages</h3>
 <table class="table">
     <tr>
         <th>Name</th>
@@ -16,10 +16,10 @@
     {
     <tr>
         <td><a asp-page="Details" asp-route-id="@item.Id">@item</a></td>
-        <td><form asp-page-handler="Delete" asp-route-id="@item.Id"><input type="submit" value="Delete" class="btn btn-link" /></form></td>
+        <td><form asp-page-handler="Delete" asp-route-id="@item.Id" method="post"><input type="submit" value="Delete" class="btn btn-link" /></form></td>
     </tr>
     }
 </table>
-<form asp-page-handler="Add"><input type="submit" value="Add @ViewBag.ItemName" class="btn btn-success" /></form><br />
+<form asp-page-handler="Add" method="post"><input type="submit" value="Add @ViewBag.ItemName" class="btn btn-success" /></form><br />
 <a asp-page="Swords/Index">Ninja Swords List</a>
 

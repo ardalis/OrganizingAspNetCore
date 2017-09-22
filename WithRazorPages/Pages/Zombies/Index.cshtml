@@ -28,7 +28,7 @@
 
         public async Task OnGetAsync()
         {
-            Zombies = _zombieRepository.List();
+            Zombies = _zombieRepository.List()
                 .Select(n => new ZombieViewModel { Id = n.Id, Name = n.Name }).ToList();
         }
 
@@ -57,5 +57,5 @@
         <li><a asp-page="/@ViewBag.ItemNames/Details" asp-route-id="@item.Id">@item</a></li>
     }
 </ul>
-<a asp-page="Index" asp-page-handler="Add">Add @ViewBag.ItemName</a><br />
+<a asp-page="Index"  asp-route-handler="Add">Add @ViewBag.ItemName</a><br />
 

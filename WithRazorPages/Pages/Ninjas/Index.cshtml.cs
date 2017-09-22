@@ -49,6 +49,7 @@ namespace WithRazorPages.Pages.Ninjas
             return RedirectToPage();
         }
 
+        [PositiveParameter("id")]
         public async Task<IActionResult> OnPostDeleteAsync(int id)
         {
             var entityToDelete = _ninjaRepository.GetById(id);

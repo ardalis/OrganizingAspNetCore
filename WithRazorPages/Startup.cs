@@ -6,6 +6,12 @@ using WithRazorPages.Core.Model;
 using WithRazorPages.Core.Interfaces;
 using WithRazorPages.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Linq;
 
 namespace WithRazorPages
 {
@@ -31,8 +37,8 @@ namespace WithRazorPages
                 })
                 .AddRazorPagesOptions(rpopt =>
                 {
-                    // this option should become available at RTM
                     rpopt.Conventions.AddPageRoute("/Pages/Shared/Error", "/Error");
+                    rpopt.Conventions.ConfigureFilter(new SelectionLoggingFilter());
                 });
 
             services.AddScoped<IRepository<Ninja>, EfRepository<Ninja>>();
@@ -61,6 +67,94 @@ namespace WithRazorPages
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+    }
+
+    public class ValidateModelAttribute : ActionFilterAttribute
+    {
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            if (!context.ModelState.IsValid)
+            {
+                context.Result = new BadRequestObjectResult(context.ModelState);
+            }
+        }
+    }
+
+    public class HandlerChangingPageFilterAttribute : Attribute, IPageFilter
+    {
+        public void OnPageHandlerSelected(PageHandlerSelectedContext context)
+        {
+            context.HandlerMethod = context.ActionDescriptor.HandlerMethods.First(m => m.Name == "Edit");
+        }
+
+        public void OnPageHandlerExecuting(PageHandlerExecutingContext context)
+        {
+        }
+
+        public void OnPageHandlerExecuted(PageHandlerExecutedContext context)
+        {
+        }
+    }
+
+    public class SelectionLoggingFilter : IPageFilter
+    {
+        public void OnPageHandlerExecuted(PageHandlerExecutedContext context)
+        {
+        }
+
+        public void OnPageHandlerExecuting(PageHandlerExecutingContext context)
+        {
+        }
+
+        public void OnPageHandlerSelected(PageHandlerSelectedContext context)
+        {
+            var factory = context.HttpContext.RequestServices.GetRequiredService<ILoggerFactory>();
+            var logger = factory.CreateLogger(context.HandlerInstance.ToString());
+            var instance = context.HandlerInstance as PageModel;
+            if (instance != null)
+            {
+                logger.LogWarning(instance.PageContext.ActionDescriptor.DisplayName);
+                context.HandlerInstance.
+                logger.LogWarning($"{context.HandlerInstance.GetType().ToString()} selected.");
+            }
+        }
+    }
+    public class PositiveParameterAttribute : Attribute, IPageFilter
+    {
+        private readonly string _parameterName;
+
+        public PositiveParameterAttribute(string parameterName)
+        {
+            _parameterName = parameterName;
+        }
+
+        public void OnPageHandlerExecuted(PageHandlerExecutedContext context)
+        {
+        }
+
+        public void OnPageHandlerExecuting(PageHandlerExecutingContext context)
+        {
+            if (!context.HandlerArguments.Keys.Contains(_parameterName))
+            {
+                context.Result = new BadRequestObjectResult($"Parameter {_parameterName} missing.");
+            }
+            var value = context.HandlerArguments[_parameterName].ToString();
+            if (int.TryParse(value, out var result))
+            {
+                if (result < 0)
+                {
+                    context.Result = new BadRequestObjectResult($"Parameter {_parameterName} is negative.");
+                }
+            }
+            else
+            {
+                context.Result = new BadRequestObjectResult($"Parameter {_parameterName} was not a valid integer.");
+            }
+        }
+
+        public void OnPageHandlerSelected(PageHandlerSelectedContext context)
+        {
         }
     }
 }

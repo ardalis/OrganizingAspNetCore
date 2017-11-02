@@ -30,12 +30,13 @@ namespace WithRazorPages.Pages.Pirates
             _pirateRepository = pirateRepository;
         }
 
-        public async Task OnGetAsync()
+        public void OnGet()
         {
             Pirates = _pirateRepository.List()
                 .Select(n => new PirateViewModel { Id = n.Id, Name = n.Name }).ToList();
         }
-        public async Task OnGetAddAsync()
+
+        public void OnGetAdd()
         {
             var entity = new Pirate()
             {
@@ -43,7 +44,7 @@ namespace WithRazorPages.Pages.Pirates
             };
             _pirateRepository.Add(entity);
 
-            await OnGetAsync();
+            OnGet();
         }
 
     }

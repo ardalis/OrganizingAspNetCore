@@ -30,12 +30,12 @@ namespace WithRazorPages.Pages.Plants
             _plantRepository = plantRepository;
         }
 
-        public async Task OnGetAsync()
+        public void OnGet()
         {
             Plants = _plantRepository.List()
                 .Select(n => new PlantViewModel { Id = n.Id, Name = n.Name }).ToList();
         }
-        public async Task OnGetAddAsync()
+        public void OnGetAdd()
         {
             var entity = new Plant()
             {
@@ -43,7 +43,7 @@ namespace WithRazorPages.Pages.Plants
             };
             _plantRepository.Add(entity);
 
-            await OnGetAsync();
+            OnGet();
         }
 
     }

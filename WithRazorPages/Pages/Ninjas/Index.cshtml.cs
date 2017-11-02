@@ -32,13 +32,13 @@ namespace WithRazorPages.Pages.Ninjas
         }
 
         [ResponseCache(Duration = 10)]
-        public async Task OnGetAsync()
+        public void OnGet()
         {
             Ninjas = _ninjaRepository.List()
                 .Select(n => new NinjaViewModel { Id = n.Id, Name = n.Name }).ToList();
         }
 
-        public async Task<IActionResult> OnPostAddAsync()
+        public IActionResult OnPostAdd()
         {
             var entity = new Ninja()
             {
@@ -50,7 +50,7 @@ namespace WithRazorPages.Pages.Ninjas
         }
 
         [PositiveParameter("id")]
-        public async Task<IActionResult> OnPostDeleteAsync(int id)
+        public IActionResult OnPostDelete(int id)
         {
             var entityToDelete = _ninjaRepository.GetById(id);
             _ninjaRepository.Delete(entityToDelete);

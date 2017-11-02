@@ -70,6 +70,7 @@ namespace WithRazorPages
         }
     }
 
+    [AttributeUsage(AttributeTargets.All, AllowMultiple = false)]
     public class ValidateModelAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext context)
@@ -81,6 +82,7 @@ namespace WithRazorPages
         }
     }
 
+    [AttributeUsage(AttributeTargets.All, AllowMultiple = false)]
     public class HandlerChangingPageFilterAttribute : Attribute, IPageFilter
     {
         public void OnPageHandlerSelected(PageHandlerSelectedContext context)
@@ -109,17 +111,19 @@ namespace WithRazorPages
 
         public void OnPageHandlerSelected(PageHandlerSelectedContext context)
         {
+            // demonstrating how Page Filters work
             var factory = context.HttpContext.RequestServices.GetRequiredService<ILoggerFactory>();
             var logger = factory.CreateLogger(context.HandlerInstance.ToString());
             var instance = context.HandlerInstance as PageModel;
             if (instance != null)
             {
-                logger.LogWarning(instance.PageContext.ActionDescriptor.DisplayName);
-                context.HandlerInstance.
-                logger.LogWarning($"{context.HandlerInstance.GetType().ToString()} selected.");
+                logger.LogInformation(instance.PageContext.ActionDescriptor.DisplayName);
+                logger.LogInformation($"{context.HandlerInstance.GetType().ToString()} selected.");
             }
         }
     }
+
+    [AttributeUsage(AttributeTargets.All, AllowMultiple = false)]
     public class PositiveParameterAttribute : Attribute, IPageFilter
     {
         private readonly string _parameterName;
